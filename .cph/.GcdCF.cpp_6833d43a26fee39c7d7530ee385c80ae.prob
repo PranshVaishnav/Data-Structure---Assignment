@@ -1,0 +1,1 @@
+{"name":"Local: GcdCF","url":"w:\\C++\\GcdCF.cpp","tests":[{"id":1671178246276,"input":"6\n5 15\n13 47\n8 9\n10009 20000\n1 1\n2 2","output":"0\n1\n-1\n79"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"w:\\C++\\GcdCF.cpp","group":"local","local":true}

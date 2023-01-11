@@ -1,0 +1,212 @@
+// C++ program for the above approach
+#include <iostream>
+using namespace std;
+
+// Node class to represent
+// a node of the linked list.
+class Node
+{
+public:
+    string data;
+    Node *next;
+
+    // Default constructor
+    Node()
+    {
+        data = "";
+        next = NULL;
+    }
+
+    // Parameterised Constructor
+    Node(string data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+// Linked list class to
+// implement a linked list.
+ class Linkedlist
+{
+    
+
+public:
+Node *head;
+    // Default constructor
+    Linkedlist() { head = NULL; }
+
+    // Function to insert a
+    // node at the end of the
+    // linked list.
+    void insertNode(string);
+
+    // Function to print the
+    // linked list.
+    void printList();
+
+    // Function to delete the
+    // node at given position
+    void replaceNode(string,string);
+
+    void deleteNodeIndex(int);
+
+    void insertNodeIndex(string,int);
+};
+
+// Function to delete the
+// node at given position
+void Linkedlist::replaceNode(string nodeOffset,string newStr)
+{
+    Node *temp = head;
+    while(temp)
+    {
+        if(temp->data==nodeOffset)
+        {
+            temp->data=newStr;
+        }
+        temp=temp->next;
+    }
+}
+
+void Linkedlist::deleteNodeIndex(int index)
+{
+    Node * temp=head;
+    Node * prev=head;
+    while(index--)
+    {
+        prev=temp;
+        temp=temp->next;
+    }
+    prev->next=prev->next->next;
+    return;
+}
+
+// Function to insert a new node.
+void Linkedlist::insertNode(string data)
+{
+    // Create the new Node.
+    Node *newNode = new Node(data);
+
+    // Assign to head
+    if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+
+    // Traverse till end of list
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+
+        // Update temp
+        temp = temp->next;
+    }
+
+    // Insert at the last.
+    temp->next = newNode;
+}
+
+void Linkedlist::insertNodeIndex(string data,int index)
+{
+    // Create the new Node.
+    Node *newNode = new Node(data);
+
+     if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+    
+    Node *temp=head;
+    Node * prev=new Node(data);
+    while(index--)
+    {
+        prev=temp;
+        temp=temp->next;
+    }
+
+    prev->next=newNode;
+    newNode->next=temp;
+
+    return;
+}
+
+
+// Function to print the
+// nodes of the linked list.
+void Linkedlist::printList()
+{
+    Node *temp = head;
+
+    // Check for empty list.
+    if (head == NULL)
+    {
+        cout << "List empty" << endl;
+        return;
+    }
+
+    // Traverse the list.
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
+
+void print(Node* temp)
+{
+
+    // Check for empty list.
+    if (temp == NULL)
+    {
+        cout << "List empty" << endl;
+        return;
+    }
+
+    // Traverse the list.
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
+
+// Driver Code
+int main()
+{
+    Linkedlist list;
+
+    // Inserting nodes
+    list.insertNode("Hi");
+    list.insertNode("My");
+    list.insertNode("Name");
+    list.insertNode("is");
+    list.insertNode("Raj");
+    list.insertNode("and");
+    list.insertNode("I");
+    list.insertNode("do");
+    list.insertNode("My");
+    list.insertNode("Work");
+    list.insertNode("On");
+    list.insertNode("Time");
+
+    cout << "Replace The String with Other String: "<<endl;
+
+    // Print the list
+    list.printList();
+    cout << endl<<endl;
+
+    list.replaceNode("My","We");
+    cout << "After replacing 'My' with 'We' we get String as: "<<endl<<endl;
+
+
+    list.printList();
+    cout << endl;
+
+    cout << endl;
+    return 0;
+}
